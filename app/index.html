@@ -1,0 +1,60 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.default.min.css"/>
+</head>
+<body>
+
+<h3>Date Picker</h3>
+<input id="datepicker"/>
+
+<hr/>
+
+<h3>Autocomplete</h3>
+<input id="autocomplete"/>
+
+<hr/>
+
+<h3>Grid</h3>
+
+<div id="grid"></div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.kendostatic.com/2014.2.716/js/kendo.all.min.js"></script>
+
+<script>
+    $(function () {
+        $("#datepicker").kendoDatePicker();
+
+        $("#autocomplete").kendoAutoComplete(["Apples", "Oranges", "Grapes"]);
+
+        $("#grid").kendoGrid({
+            height: 200,
+            columns: [
+                {
+                    field: "FirstName",
+                    title: "First Name"
+                },
+                {
+                    field: "LastName",
+                    title: "Last Name"
+                }
+            ],
+            dataSource: {
+                data: [
+                    {
+                        FirstName: "John",
+                        LastName: "Doe"
+                    },
+                    {
+                        FirstName: "Jane",
+                        LastName: "Doe"
+                    }
+                ]
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
