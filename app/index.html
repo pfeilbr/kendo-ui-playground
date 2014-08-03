@@ -19,15 +19,37 @@
 
 <div id="grid"></div>
 
+<h3>Buttons</h3>
+
+<button type="button" id="editButton">Edit</button>
+<button type="button" id="deleteButton"><span class="k-icon"></span>Delete</button>
+
+<hr/>
+
+<h3>Editor</h3>
+
+<textarea id="editor" rows="10" cols="30"></textarea>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.kendostatic.com/2014.2.716/js/kendo.all.min.js"></script>
 
 <script>
     $(function () {
+        // datepicker
         $("#datepicker").kendoDatePicker();
 
-        $("#autocomplete").kendoAutoComplete(["Apples", "Oranges", "Grapes"]);
 
+        // autocomplete
+        $("#autocomplete").kendoAutoComplete(["Apples", "Oranges", "Grapes"]);
+        var autocomplete = $("#autocomplete").data("kendoAutoComplete");
+        autocomplete.value('Oranges');
+        autocomplete.bind("change", function(e) {
+            var autocomplete = e.sender;
+            // OR var autocomplete = this;
+            console.log('autocomplete changed. value = ' + autocomplete.value());
+        });
+
+        // grid
         $("#grid").kendoGrid({
             height: 200,
             columns: [
@@ -54,6 +76,19 @@
             }
         });
     });
+
+    // buttons
+    $("#editButton").kendoButton({
+        icon: "pencil"
+    });
+
+    $("#deleteButton").kendoButton({
+        icon: "close"
+    });
+
+    // editor
+    $("#editor").kendoEditor();
+
 </script>
 
 </body>
